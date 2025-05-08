@@ -1,0 +1,164 @@
+.foto-perfil {
+    background-color: #666666;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0);
+    border: 2px solid #ced4da;
+    border-radius: 5%;
+    width: 150px;
+    height: 150px;
+    padding: 0rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.foto-perfil img {
+    object-fit: contain;
+    width: 150px;
+    height: 150px;
+}
+
+.foto-perfil .foto {
+    margin-left: 0;
+    position: relative;
+    left: 0rem;
+}
+
+.foto-perfil .trocar-imagem {
+    background-color: rgba(255, 255, 255, 0.5);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+}
+
+.foto-perfil .trocar-imagem p {
+    margin-bottom: 0;
+    text-align: center;
+    font-size: .7rem;
+    font-weight: 700;
+    line-height: 90px;
+}
+
+.foto-perfil .trocar-imagem input[type="file"] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+
+.foto-perfil:hover .trocar-imagem {
+    opacity: 1;
+}
+
+.fileUpload {
+    position: relative;
+    overflow: hidden;
+}
+
+.fileUpload input.upload {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+
+.tela-login {
+    width: 30%; /* Define a largura da barra lateral */
+    height: 100vh; /* Define a altura da barra lateral */
+    background-color: #000000; /* Fundo branco com transparência */
+    padding: 2em;
+    box-shadow: 5px 0 15px rgba(239, 238, 238, 0.3); /* Adiciona uma sombra sutil */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centraliza verticalmente */
+    align-items: center; /* Alinha os itens à esquerda */
+    right: 1;
+    position: relative;
+    z-index: 1; /* Coloca a barra acima da imagem de fundo */
+}
+
+.tela-login input[type="email"],
+.tela-login input[type="password"] {
+    padding-left: em; /* Aumenta o espaço à esquerda */
+    width: 100%;
+    padding: 0.3em;
+    margin-bottom: 0.1em;
+    border: 1px solid rgb(255, 255, 255);
+    border-radius: 10px;
+    box-sizing: border-box;
+    font-size: 0.9em;
+}
+.tela-login input::placeholder {
+    color: #bdbbbb; /* Cor cinza clara */
+    opacity: 1;  /* Garante que a cor será aplicada totalmente */
+    font-style: italic;
+    font-size: 0.9em;
+}
+.botao-logar{
+    background-color: #ffbd44;
+    margin-top: 1em;
+    margin-right: 5px;
+    padding: 5px 10px;
+    font-size: 12px;
+    cursor: pointer;            
+    border: none;
+    border-radius: 10px;
+    color: #ffffff;
+}
+.botao-senha{
+    background-color: #ffbd44;
+    margin-top: 1em;
+    margin-left: 40px;
+    padding: 5px 10px;
+    font-size: 12px;
+    cursor: pointer;            
+    border: none;
+    border-radius: 10px;
+    color: #007bff;
+
+}
+
+
+.imagem {
+    flex: 1; /* Faz a div ocupar o restante do espaço */
+    background-image: url('../img/ei2.png'); /* Substitua pelo caminho correto da imagem */
+    background-size: cover; /* Faz a imagem cobrir todo o espaço */
+    background-position: center; /* Centraliza a imagem */
+    height: 100vh; /* Garante que a altura seja igual à da tela */
+    z-index: 0; /* Coloca a imagem abaixo da barra lateral */
+}
+body {
+    display: flex; /* Define um layout flexível */
+    margin: 0;
+    padding: 0;
+    height: 100vh; /* Garante que o layout ocupe toda a altura da tela */
+}
+
+.titulo-login {
+    font-size: 1.4em;
+    font-weight: bold;
+    color: #ffffff;
+    margin-bottom: 1em;
+    text-align: center;
+    padding: 20px;
+}
+
+
