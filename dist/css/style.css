@@ -83,7 +83,7 @@
 .tela-login {
     width: 30%; /* Define a largura da barra lateral */
     height: 100vh; /* Define a altura da barra lateral */
-    background-color: #000000; /* Fundo branco com transparência */
+    background-color: #000000; /* Fundo preto */
     padding: 2em;
     box-shadow: 5px 0 15px rgba(239, 238, 238, 0.3); /* Adiciona uma sombra sutil */
     display: flex;
@@ -93,6 +93,35 @@
     right: 1;
     position: relative;
     z-index: 1; /* Coloca a barra acima da imagem de fundo */
+    overflow: hidden; /* Garante que a animação não ultrapasse os limites */
+}
+
+.tela-login::before,
+.tela-login::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 20%, transparent 80%);
+    animation: wave 6s infinite linear;
+    opacity: 0.5;
+    z-index:-1;
+}
+
+.tela-login::after {
+    animation-delay: 3s;
+    opacity: 0.3;
+}
+
+@keyframes wave {
+    0% {
+        transform: translateX(-50%) translateY(-50%) rotate(0deg);
+    }
+    100% {
+        transform: translateX(-50%) translateY(-50%) rotate(360deg);
+    }
 }
 
 .tela-login input[type="email"],
@@ -138,12 +167,12 @@
 
 
 .imagem {
-    flex: 1; /* Faz a div ocupar o restante do espaço */
-    background-image: url('../img/ei2.png'); /* Substitua pelo caminho correto da imagem */
-    background-size: cover; /* Faz a imagem cobrir todo o espaço */
-    background-position: center; /* Centraliza a imagem */
-    height: 100vh; /* Garante que a altura seja igual à da tela */
-    z-index: 0; /* Coloca a imagem abaixo da barra lateral */
+    flex: 1;
+    background-image: url('../img/painel-animado.gif'); /* Caminho para o seu GIF animado */
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    z-index: 0;
 }
 body {
     display: flex; /* Define um layout flexível */
