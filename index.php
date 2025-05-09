@@ -3,10 +3,11 @@
     <head>
 		
 		<meta charset="UTF-8">
-        <title>PHP</title>
+        <title>Login-Estacionei</title>
 
         <!-- CSS -->
         <?php include('partes/css.php'); ?>
+        <link rel="stylesheet" href="dist/css/animations.css">
         <!-- Fim CSS -->
 
     </head>

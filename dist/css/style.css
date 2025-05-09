@@ -83,9 +83,9 @@
 .tela-login {
     width: 30%; /* Define a largura da barra lateral */
     height: 100vh; /* Define a altura da barra lateral */
-    background-color: #000000; /* Fundo branco com transparência */
+    background-color: #000000; /* Fundo preto */
     padding: 2em;
-    box-shadow: 5px 0 15px rgba(239, 238, 238, 0.3); /* Adiciona uma sombra sutil */
+    box-shadow: 5px 0 15px rgb(0, 0, 0); /* Adiciona uma sombra sutil */
     display: flex;
     flex-direction: column;
     justify-content: center; /* Centraliza verticalmente */
@@ -93,6 +93,26 @@
     right: 1;
     position: relative;
     z-index: 1; /* Coloca a barra acima da imagem de fundo */
+    overflow: hidden; /* Garante que a animação não ultrapasse os limites */
+}
+
+.tela-login::before,
+.tela-login::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 20%, transparent 80%);
+    animation: wave 6s infinite linear;
+    opacity: 0.5;
+    z-index: -1;
+}
+
+.tela-login::after {
+    animation-delay: 3s;
+    opacity: 0.3;
 }
 
 .tela-login input[type="email"],
@@ -106,13 +126,23 @@
     box-sizing: border-box;
     font-size: 0.9em;
 }
+
+.tela-login input[type="email"]:focus,
+.tela-login input[type="password"]:focus {
+    outline: none; /* Remove o contorno padrão */
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.46); /* Adiciona um brilho */
+    transform: scale(1.05); /* Aumenta levemente o tamanho */
+    transition: all 0.3s ease-in-out; /* Suaviza a transição */
+}
+
 .tela-login input::placeholder {
     color: #bdbbbb; /* Cor cinza clara */
     opacity: 1;  /* Garante que a cor será aplicada totalmente */
     font-style: italic;
     font-size: 0.9em;
 }
-.botao-logar{
+
+.botao-logar {
     background-color: #ffbd44;
     margin-top: 1em;
     margin-right: 5px;
@@ -123,7 +153,8 @@
     border-radius: 10px;
     color: #ffffff;
 }
-.botao-senha{
+
+.botao-senha {
     background-color: #ffbd44;
     margin-top: 1em;
     margin-left: 40px;
@@ -133,18 +164,31 @@
     border: none;
     border-radius: 10px;
     color: #007bff;
-
 }
 
+.botao-logar:hover,
+.botao-senha:hover {
+    background-color: #e0a800; /* Altera a cor de fundo */
+    transform: translateY(-3px); /* Move o botão para cima */
+    box-shadow: 0 5px 15px rgba(245, 202, 122, 0.665); /* Adiciona uma sombra */
+    transition: all 0.3s ease-in-out; /* Suaviza a transição */
+}
+
+.botao-logar:active,
+.botao-senha:active {
+    transform: translateY(0); /* Volta à posição original */
+    box-shadow: 0 3px 8px rgba(245, 202, 122, 0.665); /* Reduz a sombra */
+}
 
 .imagem {
-    flex: 1; /* Faz a div ocupar o restante do espaço */
-    background-image: url('../img/ei2.png'); /* Substitua pelo caminho correto da imagem */
-    background-size: cover; /* Faz a imagem cobrir todo o espaço */
-    background-position: center; /* Centraliza a imagem */
-    height: 100vh; /* Garante que a altura seja igual à da tela */
-    z-index: 0; /* Coloca a imagem abaixo da barra lateral */
+    flex: 1;
+    background-image: url('../img/painel-animado.gif'); /* Caminho para o seu GIF animado */
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    z-index: 0;
 }
+
 body {
     display: flex; /* Define um layout flexível */
     margin: 0;
@@ -159,6 +203,8 @@ body {
     margin-bottom: 1em;
     text-align: center;
     padding: 20px;
+    animation: fadeInUp 1.5s ease-in-out
 }
+
 
 
