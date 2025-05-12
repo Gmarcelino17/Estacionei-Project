@@ -1,0 +1,24 @@
+/* Animação para o texto "Seja Bem-vindo(a)" */
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px); /* Começa deslocado para baixo */
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0); /* Volta à posição original */
+    }
+}
+
+/* Animação de onda fluida no fundo */
+@keyframes wave {
+    0% {
+        transform: translateX(-50%) translateY(-50%) rotate(0deg);
+    }
+    100% {
+        transform: translateX(-50%) translateY(-50%) rotate(360deg);
+    }
+}
+
+
+

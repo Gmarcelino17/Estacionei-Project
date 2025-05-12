@@ -28,9 +28,11 @@ if(mysqli_num_rows($result) >0){
         $_SESSION['Senha'] = $campo['senha'];
     }
     header("location: ../painel.php");
-
+    
     //var_dump("Acesso OK");
-}else{
-    var_dump("Acesso Negado");
+}else {
+    $_SESSION['erro'] = "Login ou senha inválidos."; // Define a mensagem de erro na sessão
+    header("location: ../index.php"); // Redireciona de volta para a página de login
+    exit;
 }
 ?>
