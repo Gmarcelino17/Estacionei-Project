@@ -3,7 +3,7 @@
 function listaUsuario(){
 
     include("conexao.php");
-    $sql = "SELECT * FROM usuarios ORDER BY idUsuario;";
+    $sql = "SELECT * FROM usuario ORDER BY id_usuario;";
             
     $result = mysqli_query($conn,$sql);
     mysqli_close($conn);
@@ -19,8 +19,8 @@ function listaUsuario(){
         foreach ($result as $coluna) {
 
             //Ativo: S ou N
-            //if($coluna["FlgAtivo"] == 'S')  $ativo = 'checked'; else $ativo = '';
-            if($coluna["FlgAtivo"] == 'S'){  
+            //if($coluna["flg_ativo"] == 'S')  $ativo = 'checked'; else $ativo = '';
+            if($coluna["flg_ativo"] == 'S'){  
                 $ativo = 'checked';
                 $icone = '<h6><i class="fas fa-check-circle text-success"></i></h6>'; 
             }else{
@@ -32,21 +32,21 @@ function listaUsuario(){
             //***Verificar os dados da consulta SQL
             $lista .= 
             '<tr>'
-                .'<td align="center">'.$coluna["idUsuario"].'</td>'
-                .'<td align="center">'.descrTipoUsuario($coluna["idTipoUsuario"]).'</td>'
-                .'<td>'.$coluna["Nome"].'</td>'
-                .'<td>'.$coluna["Login"].'</td>'
+                .'<td align="center">'.$coluna["id_usuario"].'</td>'
+                .'<td align="center">'.$coluna["id_empresa"].'</td>'
+                .'<td>'.$coluna["nome"].'</td>'
+                .'<td>'.$coluna["email"].'</td>'
                 .'<td align="center">'.$icone.'</td>'
                 .'<td>'
                     .'<div class="row" align="center">'
                         .'<div class="col-6">'
-                            .'<a href="#modalEditUsuario'.$coluna["idUsuario"].'" data-toggle="modal">'
+                            .'<a href="#modalEditUsuario'.$coluna["id_usuario"].'" data-toggle="modal">'
                                 .'<h6><i class="fas fa-edit text-info" data-toggle="tooltip" title="Alterar usuário"></i></h6>'
                             .'</a>'
                         .'</div>'
                         
                         .'<div class="col-6">'
-                            .'<a href="#modalDeleteUsuario'.$coluna["idUsuario"].'" data-toggle="modal">'
+                            .'<a href="#modalDeleteUsuario'.$coluna["id_usuario"].'" data-toggle="modal">'
                                 .'<h6><i class="fas fa-trash text-danger" data-toggle="tooltip" title="Excluir usuário"></i></h6>'
                             .'</a>'
                         .'</div>'
@@ -54,7 +54,7 @@ function listaUsuario(){
                 .'</td>'
             .'</tr>'
             
-            .'<div class="modal fade" id="modalEditUsuario'.$coluna["idUsuario"].'">'
+            .'<div class="modal fade" id="modalEditUsuario'.$coluna["id_usuario"].'">'
                 .'<div class="modal-dialog modal-lg">'
                     .'<div class="modal-content">'
                         .'<div class="modal-header bg-info">'
@@ -65,19 +65,19 @@ function listaUsuario(){
                         .'</div>'
                         .'<div class="modal-body">'
 
-                            .'<form method="POST" action="php/salvarUsuario.php?funcao=A&codigo='.$coluna["idUsuario"].'" enctype="multipart/form-data">'              
+                            .'<form method="POST" action="php/salvarUsuario.php?funcao=A&codigo='.$coluna["id_usuario"].'" enctype="multipart/form-data">'              
                 
                                 .'<div class="row">'
                                     .'<div class="col-8">'
                                         .'<div class="form-group">'
-                                            .'<label for="iNome">Nome:</label>'
-                                            .'<input type="text" value="'.$coluna["Nome"].'" class="form-control" id="iNome" name="nNome" maxlength="50">'
+                                            .'<label for="inome">nome:</label>'
+                                            .'<input type="text" value="'.$coluna["nome"].'" class="form-control" id="inome" name="nnome" maxlength="50">'
                                         .'</div>'
                                     .'</div>'
                     
                                     .'<div class="col-4">'
                                         .'<div class="form-group">'
-                                            .'<label for="iNome">Tipo de Usuário:</label>'
+                                            .'<label for="inome">Tipo de Usuário:</label>'
                                             .'<select name="nTipoUsuario" class="form-control" required>'
                                                 .'<option value="'.$coluna["idTipoUsuario"].'">'.descrTipoUsuario($coluna["idTipoUsuario"]).'</option>'
                                                 .optionTipoUsuario()
@@ -127,22 +127,22 @@ function listaUsuario(){
                 .'</div>'
             .'</div>'
             
-            .'<div class="modal fade" id="modalDeleteUsuario'.$coluna["idUsuario"].'">'
+            .'<div class="modal fade" id="modalDeleteUsuario'.$coluna["id_usuario"].'">'
                 .'<div class="modal-dialog">'
                     .'<div class="modal-content">'
                         .'<div class="modal-header bg-danger">'
-                            .'<h4 class="modal-title">Excluir Usuário: '.$coluna["idUsuario"].'</h4>'
+                            .'<h4 class="modal-title">Excluir Usuário: '.$coluna["id_usuario"].'</h4>'
                             .'<button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">'
                                 .'<span aria-hidden="true">&times;</span>'
                             .'</button>'
                         .'</div>'
                         .'<div class="modal-body">'
 
-                            .'<form method="POST" action="php/salvarUsuario.php?funcao=D&codigo='.$coluna["idUsuario"].'" enctype="multipart/form-data">'              
+                            .'<form method="POST" action="php/salvarUsuario.php?funcao=D&codigo='.$coluna["id_usuario"].'" enctype="multipart/form-data">'              
 
                                 .'<div class="row">'
                                     .'<div class="col-12">'
-                                        .'<h5>Deseja EXCLUIR o usuário '.$coluna["Nome"].'?</h5>'
+                                        .'<h5>Deseja EXCLUIR o usuário '.$coluna["nome"].'?</h5>'
                                     .'</div>'
                                 .'</div>'
                                 
@@ -164,12 +164,12 @@ function listaUsuario(){
 }
 
 //Próximo ID do usuário
-function proxIdUsuario(){
+function proxid_usuario(){
 
     $id = "";
 
     include("conexao.php");
-    $sql = "SELECT MAX(idUsuario) AS Maior FROM usuarios;";        
+    $sql = "SELECT MAX(id_usuario) AS Maior FROM usuario;";        
     $result = mysqli_query($conn,$sql);
     mysqli_close($conn);
 
@@ -197,7 +197,7 @@ function tipoAcessoUsuario($id){
     $resp = "";
 
     include("conexao.php");
-    $sql = "SELECT idTipoUsuario FROM usuarios WHERE idUsuario = $id;";        
+    $sql = "SELECT idTipoUsuario FROM usuario WHERE id_usuario = $id;";        
     $result = mysqli_query($conn,$sql);
     mysqli_close($conn);
 
@@ -240,7 +240,7 @@ function fotoUsuario($id){
     $resp = "";
 
     include("conexao.php");
-    $sql = "SELECT Foto FROM usuarios WHERE idUsuario = $id;";        
+    $sql = "SELECT foto FROM usuario WHERE id_usuario = $id;";        
     $result = mysqli_query($conn,$sql);
     mysqli_close($conn);
 
@@ -255,7 +255,7 @@ function fotoUsuario($id){
         
         foreach ($array as $coluna) {            
             //***Verificar os dados da consulta SQL
-            $resp = $coluna["Foto"];
+            $resp = $coluna["foto"];
         }        
     } 
 
@@ -291,7 +291,7 @@ function nomeUsuario($id){
 }
 
 //Função para buscar o login do usuário
-<?php function loginUsuario($id){
+function loginUsuario($id){
 
     $resp = "";
     
@@ -319,13 +319,13 @@ function nomeUsuario($id){
     }
 ?>
 
-//Função para buscar a flag FlgAtivo do usuário
+//Função para buscar a flag flg_ativo do usuário
 function ativoUsuario($id){
 
     $resp = "";
 
     include("conexao.php");
-    $sql = "SELECT FlgAtivo FROM usuarios WHERE idUsuario = $id;";        
+    $sql = "SELECT flg_ativo FROM usuario WHERE id_usuario = $id;";        
     $result = mysqli_query($conn,$sql);
     mysqli_close($conn);
 
@@ -334,7 +334,7 @@ function ativoUsuario($id){
         
         foreach ($result as $coluna) {            
             //***Verificar os dados da consulta SQL
-            if($coluna["FlgAtivo"] == 'S') $resp = 'checked'; else $resp = '';
+            if($coluna["flg_ativo"] == 'S') $resp = 'checked'; else $resp = '';
         }        
     } 
 
@@ -346,7 +346,7 @@ function qtdUsuariosAtivos(){
     $qtd = 0;
 
     include("conexao.php");
-    $sql = "SELECT COUNT(*) AS Qtd FROM usuarios WHERE FlgAtivo = 'S';";
+    $sql = "SELECT COUNT(*) AS Qtd FROM usuario WHERE flg_ativo = 'S';";
 
     $result = mysqli_query($conn,$sql);
     mysqli_close($conn);

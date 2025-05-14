@@ -194,6 +194,7 @@
         <div class="sidebar">
             <h2>Menu</h2>
             <a href="#">Dashboard</a>
+            <a href="usuarios.php">Usuários</a>
             <a href="#">Controle de Acesso</a>
             <a href="#">Relatórios</a>
             <a href="index.php">Sair</a>
